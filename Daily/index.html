@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AM Other Redirect</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .message {
+      font-size: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="message" class="message">
+    Redirecting...
+  </div>
+  <script>
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbx9pth3rm0tnznPy0snZfoVEtJBvNqaj-qB6DeYqaVJ1CJkIkzy8EbVOA9U180tAQTjAg/exec";
+
+    fetch(scriptUrl)
+      .then(response => response.text())
+      .then(url => {
+        if (url.startsWith("http")) {
+          window.location.href = url;
+        } else {
+          document.getElementById('message').innerText = url;
+        }
+      })
+      .catch(error => {
+        document.getElementById('message').innerText = "Something went wrong. Please try again later.";
+      });
+  </script>
+</body>
+</html>
