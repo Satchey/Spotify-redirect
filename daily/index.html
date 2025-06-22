@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AM Other Redirect</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Redirect</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -21,18 +21,22 @@
     Redirecting...
   </div>
   <script>
-    const scriptUrl = "https://script.google.com/macros/s/AKfycbyLKBoVkpGsyajglGcyxEy6tLZDXBAAu01qz8Go_B9Apg8b-1G4K9xJY5SX9Bbe-wTPtA/exec";
+    // Replace with your actual Google Apps Script Web App URL
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbzeG--fDd83BRWEZwglgr8bZbaruxSe6lVV8ETpdGCQTGk4S09Muyg1kkzCEfQbAboFgw/exec";
 
     fetch(scriptUrl)
       .then(response => response.text())
       .then(url => {
+        // If the response is a valid URL, redirect
         if (url.startsWith("http")) {
           window.location.href = url;
         } else {
+          // If no valid URL, show the message
           document.getElementById('message').innerText = url;
         }
       })
       .catch(error => {
+        // Handle errors (e.g., network issues)
         document.getElementById('message').innerText = "Something went wrong. Please try again later.";
       });
   </script>
